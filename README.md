@@ -19,7 +19,7 @@ This part will be updated in the future. The preliminary design documents are cu
 
 ![overview001](./imgs/overview001.png)
 
-![proto001.png](./imgs/proto001.png)
+![proto001.png](./imgs/proto001.jpg)
 
 _The project's prototype at the moment_
 
