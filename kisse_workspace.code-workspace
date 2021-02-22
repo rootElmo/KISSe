@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		},
+		{
+			"name": "210219-103636-teensylc",
+			"path": "..\\..\\210219-103636-teensylc"
+		},
+		{
+			"name": "kisse",
+			"path": ".."
+		},
+		{
+			"name": "kisse",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"ios": "cpp",
+			"*.tcc": "cpp"
+		}
+	}
+}
