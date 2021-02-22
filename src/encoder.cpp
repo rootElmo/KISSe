@@ -5,15 +5,19 @@
 // Move these ints to encoder.h??
 // Research this. (variables in .h vs. variables in .cpp)
 
+// these states could be put into a single byte
+// then read with some bitmasking magic.
+// Research, try out. Might be alot of work
 int8_t incr_amnt = 0;
 int8_t enc_amnt = 0;
 int8_t a_state;
-int8_t a_last_state = 1; // Encoder detent sits at ENC_A = HIGH
+int8_t a_last_state; 
                          // (https://www.mouser.fi/datasheet/2/54/PEC11R-777457.pdf)
 void encoder::init() { // Pins defined at pins.h                   
     pinMode(ENC_A, INPUT);
     pinMode(ENC_B, INPUT);
     Serial.println(enc_amnt);
+    a_last_state = 1; // Encoder detent sits at ENC_A = HIGH
 }
 
 // Base of code copied from (https://howtomechatronics.com/tutorials/arduino/rotary-encoder-works-use-arduino/)

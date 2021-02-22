@@ -6,7 +6,7 @@
 
 ui myUi;
 
-void setup() {
+void setup() { // pass sequencer to ui with init
     myUi.init();
 }
 

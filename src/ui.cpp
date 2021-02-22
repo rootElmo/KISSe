@@ -3,6 +3,7 @@
 #include "encoder.h"
 #include "pins.h"
 #include "buttons.h"
+#include "seq.h"
 
 encoder test_enc;
 buttons my_butt; // big funny
@@ -12,7 +13,7 @@ int note_list [] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // Move everything "note" 
 int note_selected = 0;
 bool btn_state = false;
 
-void ui::init() { // Pins defined at pins.h 
+void ui::init() { // Get Sequencer from main.cpp with init!!!
     test_enc.init();
     my_butt.init();
     pinMode(ENC_BTN, INPUT); // MOVE TO BUTTONS-CPP
