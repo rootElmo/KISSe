@@ -10,6 +10,7 @@ These are the features that are working as of now (this will be updated):
 
   * Encoder selection/value manipulation
   * Simple button scanning
+  * Simple sequencer loop, with tempo, start, and stop controls
 
 Take a look at the code [here!](./src/)
 
