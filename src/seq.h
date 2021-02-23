@@ -13,7 +13,7 @@ class seq {
         void init();
         void incrStep();
         bool stepGateState(int gate);
-        int incrTempo(int amnt);
+        void incrTempo(int amnt);
         void updateClock();
 
         void onPlay();

@@ -24,7 +24,11 @@ void ui::init() { // Get Sequencer from main.cpp with init!!!
     pinMode(PRINT_BTN, INPUT); // MOVE TO BUTTONS-CPP
 }
 
-void ui::onEncIncr() { 
+void ui::onEncIncr() {
+    if (print_incr != 0) {
+        my_seq.incrTempo(print_incr);
+    }
+    /*
     if (digitalRead(ENC_BTN) == LOW) { // If encoder button is pressed, set note value
         note_list[note_selected] += print_incr; // move this whole shebang to buttons.cpp,
         Serial.print("Note value: ");           // since the encoder button IS A BUTTON
@@ -40,10 +44,12 @@ void ui::onEncIncr() {
         Serial.print("Note selected: ");
         Serial.println(note_selected);
     }
+    */
 }
 
 /*
-
+Printing of notes is not necessary anymore for debugging.
+Need to completely remove this and related parts from ui.cpp
 void ui::printNotes() { // print note_list notes
     if (digitalRead(PRINT_BTN) == HIGH) {
         if (btn_state) {

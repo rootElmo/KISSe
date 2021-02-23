@@ -4,8 +4,10 @@
 
 sequence test_seq;
 
-byte bpm = 120;                         // 
-unsigned int bpm_millis = 60000 / bpm;  // 15000 to be replaced by PPQ setting in the future (parts per quarter)
+byte bpm = 120;                         
+unsigned int bpm_millis = 15000 / bpm;  // One beat = 1 minute / beats per minute.
+                                        // We can use this value later to determine PPQ (parts per quarter)
+                                        // for clock output, to improve compatibility between devices.
 bool play_on;
 int seq_length = 16;
 int step = -1;
@@ -54,15 +56,23 @@ void seq::incrStep() { // increment step
 }
 
 bool seq::seqRunning() {
-    return play_on; // something funky going on here? ui.cpp reads this as true, not as the variable value
+    return play_on; // ~~something funky going on here? ui.cpp reads this as true, not as the variable value~~
                     // Fixed above issue, didn't handle queue correctly.
                     // Need to learn more about queue and implement corrently for button events
 }
 
-int seq::incrTempo(int amnt) { // increment tempo
-
+void seq::incrTempo(int amnt) { // increment tempo
+    bpm += amnt;
+    if (bpm >= 420) {
+        bpm = 420;
+    } else if (bpm <= 10) {
+        bpm = 10;
+    }
+    bpm_millis = 15000 / bpm;
+    Serial.print("BPM = ");
+    Serial.println(bpm);
 }
 
 bool seq::stepGateState(int gate) { // get gate state from sequence
-
+    
 }
