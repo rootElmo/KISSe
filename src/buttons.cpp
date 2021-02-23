@@ -4,7 +4,8 @@
 #include <cppQueue.h>
 
 int btn_map[] = {PLAY_BTN, STOP_BTN, BTN1, BTN2};
-cppQueue queue(3, 10, FIFO);
+// cppQueue queue(3, 10, FIFO);
+// Queue not used now, need to study it more, implement correctly. Wouldn't pop events correctly last time.
 // NEED TO ADD DEBOUNCE TO BUTTONS
 // MOVE ENCODER BUTTON AND PRINT BUTTON
 // FROM ui.cpp TO HERE!
