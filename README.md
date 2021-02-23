@@ -18,7 +18,7 @@ Take a look at the code [here!](./src/)
 
 This part will be updated in the future. The preliminary design documents are currently private and in Finnish. These will be translated and uploaded at a later time.
 
-![overview001](./imgs/overview001.png)
+![overview001](./imgs/overview002.png)
 
 ![proto001.png](./imgs/proto001.jpg)
 
