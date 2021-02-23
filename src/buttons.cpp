@@ -1,13 +1,14 @@
 #include <Arduino.h>
 #include "buttons.h"
 #include "pins.h"
+#include <cppQueue.h>
 
 int btn_map[] = {PLAY_BTN, STOP_BTN, BTN1, BTN2};
-
+cppQueue queue(3, 10, FIFO);
 // NEED TO ADD DEBOUNCE TO BUTTONS
 // MOVE ENCODER BUTTON AND PRINT BUTTON
 // FROM ui.cpp TO HERE!
-
+int btn_event;
 void buttons::init() {
     pinMode(PLAY_BTN, INPUT);
     pinMode(STOP_BTN, INPUT);
@@ -42,6 +43,8 @@ void buttons::getButtonEvent(int button, bool state) { //WORKS LIKE A VOID FOR N
         case 0:
             if (state == false) {
                 Serial.println("Play!");
+                btn_event = true;
+                // onPlay();
                 break;
             } else {
                 break;
@@ -49,6 +52,8 @@ void buttons::getButtonEvent(int button, bool state) { //WORKS LIKE A VOID FOR N
         case 1:
             if (state == false) { // if state is false
                 Serial.println("Stop!");
+                btn_event = false;
+                // onStop();
                 break;
             } else {
                 break;
@@ -56,4 +61,19 @@ void buttons::getButtonEvent(int button, bool state) { //WORKS LIKE A VOID FOR N
         default:
             break;
     }
+}
+
+// Learn more about this. Library has some bitwizardry with pointers
+/*
+void buttons::onPlay() {
+    queue.push(0);
+}
+
+void buttons::onStop() {
+    queue.push(1);
+}
+*/
+
+bool buttons::getQueEvent() {
+    return btn_event;
 }
