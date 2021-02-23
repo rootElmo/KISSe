@@ -55,6 +55,8 @@ void seq::incrStep() { // increment step
 
 bool seq::seqRunning() {
     return play_on; // something funky going on here? ui.cpp reads this as true, not as the variable value
+                    // Fixed above issue, didn't handle queue correctly.
+                    // Need to learn more about queue and implement corrently for button events
 }
 
 int seq::incrTempo(int amnt) { // increment tempo
