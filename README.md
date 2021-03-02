@@ -14,6 +14,8 @@ These are the features that are working as of now (this will be updated):
 
 Take a look at the code [here!](./src/)
 
+The schematics can be found [here!](./schematics/)
+
 ## What's it about?
 
 This part will be updated in the future. The preliminary design documents are currently private and in Finnish. These will be translated and uploaded at a later time.
