@@ -1,13 +1,12 @@
 #include <Arduino.h>
 #include "ui.h"
-#include "encoder.h"
 #include "pins.h"
 #include "buttons.h"
 #include "seq.h"
+// remoevd encoder as of now, add it after button multiplexing
 
 // TODO: push button presses to queue
 
-encoder test_enc;
 buttons my_butt; // big funny
 seq my_seq;
 
@@ -17,11 +16,8 @@ int note_selected = 0;
 bool btn_state = false;
 
 void ui::init() { // Get Sequencer from main.cpp with init!!!
-    test_enc.init();
-    my_butt.init();
+    // my_butt.init();
     my_seq.init();
-    pinMode(ENC_BTN, INPUT); // MOVE TO BUTTONS-CPP
-    pinMode(PRINT_BTN, INPUT); // MOVE TO BUTTONS-CPP
 }
 
 void ui::onEncIncr() {
@@ -45,11 +41,7 @@ void ui::poll() {
     if (my_seq.seqRunning()) { // If "play_on" = true in seq.cpp, update clock!
         my_seq.updateClock();
     }
-    print_incr = test_enc.poll();
-    if (print_incr != 0) {
-        onEncIncr(); // If encoder is incremented, handle increment
-    }
-    my_butt.poll();
+    // my_butt.poll();
     if (my_butt.getQueEvent() == true) {
         // Serial.println("Play in queue");
         // Play button is pressed

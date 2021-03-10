@@ -2,37 +2,51 @@
 #include "buttons.h"
 #include "pins.h"
 #include <cppQueue.h>
+// #include "SPI.h"
+// #include <gpio_MCP23S17.h>
 
-int btn_map[] = {PLAY_BTN, STOP_BTN, BTN1, BTN2};
+// int btn_map[] = {PLAY_BTN, STOP_BTN, BTN1, BTN2};
 // cppQueue queue(3, 10, FIFO);
 // Queue not used now, need to study it more, implement correctly. Wouldn't pop events correctly last time.
 // NEED TO ADD DEBOUNCE TO BUTTONS
 // MOVE ENCODER BUTTON AND PRINT BUTTON
 // FROM ui.cpp TO HERE!
 int btn_event;
+
+// gpio_MCP23S17 mcp(10,0x20);
+
 void buttons::init() {
+    /*
     pinMode(PLAY_BTN, INPUT);
     pinMode(STOP_BTN, INPUT);
     pinMode(BTN1, INPUT);
     pinMode(BTN2, INPUT);
-
+    
+    mcp.begin();
+    for (int i = 0; i < 4; i++) {
+        // Set mcp23s17 output and input pins (1 = in; 0 = out)
+        // mcp.gpioPinMode(i, 1);
+        mcp.gpioPinMode(i+4, 1);
+        // mcp.gpioPinMode(i+8, 1);
+        // mcp.gpioPinMode(i+12, 1);
+    }
+    */
     poll();
     // get poll() here 1 time to save BUTTON STATES TO btn_state_matrix[]
 }
 
 void buttons::poll() { // Scan buttons for state change
-    for (int i = 0; i <= 3; i++) {
-        btn_status_matrix[i] = digitalRead(btn_map[i]);
-        // Needs to know last state
-        // to prevent EXTRA LONG PRINTS
-        // We don't need to constantly return the button state,
-        // just as it's changing
-        if (btn_status_matrix[i] != btn_matrix[i]) {
-            getButtonEvent(i, btn_status_matrix[i]);
-            btn_matrix[i] = btn_status_matrix[i];
-            // call a function after setting buttons to make an event
-        }
+    /*
+    for (int ii = 0; ii < 4; ii++) {
+        mcp.gpioDigitalWrite(ii+4, HIGH);
     }
+    
+    int test = mcp.readGpioPort();
+    Serial.print("Button values: ");
+    Serial.println(test);
+
+    */
+
 }
 
 void buttons::getButtonEvent(int button, bool state) { //WORKS LIKE A VOID FOR NOW, USE RETURN VALUE TO CONTROL SEQ

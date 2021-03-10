@@ -7,8 +7,8 @@
 #define ENC_A 20
 #define ENC_B 21
 
-#define PRINT_BTN 22
-#define BTN1 7
-#define BTN2 8
-#define STOP_BTN 9
-#define PLAY_BTN 10
+// #define PRINT_BTN 22
+// #define BTN1 7
+// #define BTN2 8
+// #define STOP_BTN 9
+// #define PLAY_BTN 10
