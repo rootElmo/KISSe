@@ -23,12 +23,6 @@ This part will be updated in the future. The preliminary design documents are cu
 
 Read of my progress below!!
 
-![overview001](./imgs/overview002.png)
-
-![proto001.png](./imgs/proto001.jpg)
-
-_The project's prototype at the moment_
-
 ## 10.03.2021
 
 After a couple of weeks of struggling I managed to get the button matrix scanning working for the sequencer! The code is currently in **main.cpp**, but will be moved to its place in **buttons.cpp**.
@@ -53,7 +47,12 @@ _Button scanning working!_
 
 _The device (so far)_
 
-## To-do
+## 22.02.2021
 
-  * schematics
-  * translation of design documents
+I was able to create a light prototype of the sequencer! It didn't actually "play" any notes, but it did print the corresponding values to the serial monitor. With the encoder you could raise the tempo.
+
+![overview001](./imgs/overview002.png)
+
+![proto001.png](./imgs/proto001.jpg)
+
+_The project's prototype at the moment_
