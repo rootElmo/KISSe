@@ -37,7 +37,7 @@ The code is pretty much a carbon copy of the **Buttons.cpp** file from the **Sup
 
 I had to learn **bit manipulation** which I had never used before. I can definitely see its benefits now!
 
-(TODO: upload schematics)
+[Schematics can be found here!](./schematics/rev02.pdf)
 
 ![buttonmatrix001](./imgs/buttonmatrix001.gif)
 
