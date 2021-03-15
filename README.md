@@ -2,6 +2,8 @@
 
 A eurorack-format sequencer which is going to be part of my thesis work.
 
+Prototype rev. 2. Button matrix scanning working.
+
 [Inspired by Super Sixteen by Matthew Cieplak](https://github.com/matthewcieplak/super-sixteen)
 
 ## Working at this moment
