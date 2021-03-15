@@ -89,7 +89,7 @@ void buttons::pollButtons() {
     mcp.gpioDigitalWrite(col+8, LOW);
 }
 
-void buttons::getEvent() {
+int buttons::getEvent() {
     // Read event from queue
     // When this gets moved to buttons.cpp,
     // It should only return the below value 
