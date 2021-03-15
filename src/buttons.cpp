@@ -89,53 +89,8 @@ void buttons::pollButtons() {
     mcp.gpioDigitalWrite(col+8, LOW);
 }
 
-int buttons::getEvent() {
-    // Read event from queue
-    // When this gets moved to buttons.cpp,
-    // It should only return the below value 
-    // return uint16_t print = events.pop();
-    uint16_t print = events.pop();
-    // Serial.println(print, BIN);
-
-    // The whole shebang under here could be moved to ui.cpp
-    // later, since we only need to return the states of the buttons.
-    // Classes which check for the presses should be the ones
-    // doing whatever happens below.
-    if ((print >> 8) == 1) { // Check the last bit for "ON" state (1 = ON, 0=OFF)
-        if ((print & B01111111) < 16) { // button matrix has values below 16
-            Serial.print("Button ");
-            int buttonNum = (print & B00001111) + 1; // Shoudln't need the masking, keep just in case
-            Serial.print(buttonNum);
-            Serial.println(" pressed");
-        } else { // Check the function buttons (values at or above 16)
-            // In the future, there might be more
-            // FUNC buttons, but these will do for
-            // testing
-            switch (print & B01111111)
-            {
-            case 16:
-                    // Play
-                    Serial.println("PLAY pressed");
-                break;
-            case 17:
-                    // Stop
-                    Serial.println("STOP pressed");
-                break;
-            case 18:
-                    // Defined by user (me :D)
-                    Serial.println("TBA pressed");
-                break;
-            }
-        }
-    }
-    if (print == 0) {
-        return;
-    }
-    // Below printing for debugging
-    /*
-    Serial.print("Event is: ");
-    Serial.println(print, BIN);
-    */
+int buttons::getEvent(uint16_t event) {
+    return events.pop();
 }
 
 void buttons::onToggle(uint16_t event){

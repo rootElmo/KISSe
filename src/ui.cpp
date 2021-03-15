@@ -32,8 +32,16 @@ void ui::onStopBtn() {
 }
 
 void ui::poll() {
-    int btn_value = 0;
+    
     my_buttons.pollButtons();
-    my_buttons.getEvent();
+    uint16_t value = 0;
+    if (my_buttons.getEvent(value) == 0) {
+        int button = value & 0x00FF;
+        bool button_state = (value & 0x800) >> 8;
+        Serial.print("Button ");
+        Serial.print(button);
+        Serial.print(", value: ");
+        Serial.println(value, BIN);
+    }
 
 }
