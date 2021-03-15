@@ -3,12 +3,12 @@
 class buttons {
     public:
         void init();
-        void poll();
-        void getButtonEvent(int button, bool state); // change return type to int later
-        void onPlay();
-        void onStop();
-        bool getQueEvent();
+        void pollButtons();
+        void getEvent();
     private:
-        bool btn_matrix[4] = {1, 1, 1, 1};
-        bool btn_status_matrix[4]; // SAVE LAST STATE HERE!!!!
+        int button_map[16] = {15,11,7,3,    14,10,6,2,    13,9,5,1,    12,8,4,0};
+        bool button_matrix[16] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0};
+        void onToggle(uint16_t event);
+        uint16_t button_state;
+        uint16_t button_mask;
 };

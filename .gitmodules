@@ -1,0 +1,9 @@
+[submodule "lib/Arduino-Queue"]
+    path = lib/Arduino_Queue
+    url = https://github.com/sdesalas/Arduino-Queue.h.git
+[submodule "Arduino-Queue.h"]
+	path = Arduino-Queue.h
+	url = https://github.com/sdesalas/Arduino-Queue.h
+[submodule "lib/Arduino-Queue.h"]
+	path = lib/Arduino-Queue.h
+	url = https://github.com/sdesalas/Arduino-Queue.h
