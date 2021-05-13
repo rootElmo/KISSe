@@ -2,7 +2,9 @@
 #include "seq.h"
 #include <elapsedMillis.h>
 
-sequence test_seq;
+namespace kisse {
+
+sequence active_seq;
 
 byte bpm = 120;                         
 unsigned int bpm_millis = 15000 / bpm;  // One beat = 1 minute / beats per minute.
@@ -12,6 +14,8 @@ bool play_on;
 int seq_length = 16;
 int step = -1;
 bool first_step = true; // Do I really need first_step boolean atm?
+int selected_step = 0;
+
 elapsedMillis stepTime;
 
 void seq::init() {
@@ -50,21 +54,28 @@ void seq::incrStep() { // increment step
         }
         stepTime = 0;
         first_step = false;
-        Serial.print("Step value: ");
-        Serial.println(test_seq.note_matrix[step]);
+        if (active_seq.gate_matrix[step] == true) { // If step is active (gate_matrix[] holds the states)
+            Serial.print("Step ");
+            Serial.print(step + 1);
+            Serial.print(" active. ");
+            Serial.print("Step value: ");
+            Serial.println(active_seq.note_matrix[step]);
+        } else if (active_seq.gate_matrix[step] == false) { // If step is inactive
+            Serial.print("Step ");
+            Serial.print(step + 1);
+            Serial.println(" inactive. ");
+        }
     }
 }
 
 bool seq::seqRunning() {
-    return play_on; // ~~something funky going on here? ui.cpp reads this as true, not as the variable value~~
-                    // Fixed above issue, didn't handle queue correctly.
-                    // Need to learn more about queue and implement corrently for button events
+    return play_on;
 }
 
-void seq::incrTempo(int amnt) { // increment tempo
+void seq::setTempo(int amnt) { // increment tempo
     bpm += amnt;
-    if (bpm >= 420) {
-        bpm = 420;
+    if (bpm >= 255) {
+        bpm = 255;
     } else if (bpm <= 10) {
         bpm = 10;
     }
@@ -74,5 +85,30 @@ void seq::incrTempo(int amnt) { // increment tempo
 }
 
 bool seq::stepGateState(int gate) { // get gate state from sequence
-    
+    // could use this when determining gate length?
+    return 1;
+}
+
+void seq::selectStep(int step) { // something funky going on here
+    // Steps 5, 9, 13 not activating while button pressed
+    if (selected_step == step || active_seq.gate_matrix[step] == false) {
+        active_seq.gate_matrix[step] = !active_seq.gate_matrix[step];
+    }
+    selected_step = step;
+}
+
+void seq::setPitch(int value) {
+    active_seq.note_matrix[selected_step] += value;
+}
+
+
+// Check if this function is ever called????
+bool *seq::getPtrnMatrix() {
+    return active_seq.gate_matrix;
+}
+
+int seq::getSelectedStep() {
+    return selected_step;
+}
+
 }

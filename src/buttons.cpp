@@ -5,6 +5,8 @@
 #include <gpio_MCP23S17.h>
 #include "../lib/Arduino-Queue.h/Queue.h"
 
+namespace kisse {
+
 #define DEBOUNCE_TIME 20
 
 gpio_MCP23S17 mcp(10,0x20);
@@ -51,9 +53,6 @@ void buttons::pollButtons() {
         int button_num = button_map[col * 4 + ii];
         
         uint16_t button_state = button_val & 0xF000;
-        // Mask off everything except the row (INPUT) pins (1111 0000 0000 0000).
-        // The integer returned by the readGpioPort is a 16-bit representation
-        // of the states of all the pins.
 
         button_state = button_state >> 12; // Shift the input pins to "zero" position (1111)
         button_state = button_state & 0x01 << ii; // Select one bit to read depending on "o" (1111 & 0x01 = 0001 when o = 0)
@@ -89,7 +88,7 @@ void buttons::pollButtons() {
     mcp.gpioDigitalWrite(col+8, LOW);
 }
 
-int buttons::getEvent(uint16_t event) {
+int buttons::getEvent() {
     return events.pop();
 }
 
@@ -103,4 +102,6 @@ void buttons::onToggle(uint16_t event){
     events.push(event);
     bouncing_button = event & 0x00FF;
     debounce_timer = 0;
+}
+
 }
