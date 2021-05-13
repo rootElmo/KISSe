@@ -1,3 +1,6 @@
 [submodule "lib/Arduino-Queue.h"]
 	path = lib/Arduino-Queue.h
 	url = https://github.com/sdesalas/Arduino-Queue.h
+[submodule "lib/MCP48xx"]
+	path = lib/MCP48xx
+	url = https://github.com/SteveGdvs/MCP48xx

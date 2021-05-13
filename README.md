@@ -4,6 +4,8 @@ A eurorack-format sequencer which is going to be part of my thesis work.
 
 [Inspired by Super Sixteen by Matthew Cieplak](https://github.com/matthewcieplak/super-sixteen)
 
+![kisse001](./imgs/kisse001.jpg)
+
 ## Working at this moment
 
 These are the features that are working as of now (this will be updated):
